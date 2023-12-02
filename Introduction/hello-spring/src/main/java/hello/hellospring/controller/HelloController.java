@@ -1,6 +1,6 @@
 package hello.hellospring.controller;
 
-import lombok.Data;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
 
     @GetMapping(value = "/hello")
-    public String hello(Model model) {
+    public String hello(@NonNull Model model) {
         model.addAttribute("data", "spring!!");
         return "hello"; // templates 폴더 아래의 hello.html 파일을 찾아서 렌더링
     }
 
     @GetMapping(value = "/hello-mvc")
-    public String helloMvc(@RequestParam(name = "name", required = false) String name, Model model) {
+    public String helloMvc(@RequestParam(name = "name", required = false) String name, @NonNull Model model) {
         model.addAttribute("name", name);
         return "hello-template";
     }
@@ -38,8 +38,12 @@ public class HelloController {
         return hello;   // 객체를 반환하면 MappingJackson2HttpMessageConverter 동작: Jackson 라이브러리가 변환해서 바디에 담아줌
     }
 
-    @Data
     static class Hello {
+
         private String name;
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }
