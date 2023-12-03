@@ -1,6 +1,7 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class MemoryMemberRepositoryImpl implements MemberRepository {
     private static final AtomicLong sequence = new AtomicLong(0); // 시퀀스 생성
 
     @Override
-    public Member save(Member member) {
+    public Member save(@NonNull Member member) {
         member.setId(sequence.incrementAndGet());
         store.put(member.getId(), member); //   저장 시 시퀀스 증가 후 저장해야 함
         return member;
@@ -40,7 +41,7 @@ public class MemoryMemberRepositoryImpl implements MemberRepository {
         return new ArrayList<>(store.values());
     }
 
-    Map<Long, Member> getStore() {
+    public Map<Long, Member> getStore() {
         return store;
     }
 }
