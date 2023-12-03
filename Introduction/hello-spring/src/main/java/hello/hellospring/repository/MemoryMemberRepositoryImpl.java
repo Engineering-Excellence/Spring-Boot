@@ -2,7 +2,6 @@ package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
 import org.springframework.lang.NonNull;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
