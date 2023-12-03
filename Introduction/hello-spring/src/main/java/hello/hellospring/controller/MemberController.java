@@ -6,6 +6,7 @@ import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -31,5 +32,11 @@ public class MemberController {
         memberService.join(member);
 
         return "redirect:/"; // 홈 화면으로 리다이렉트. 회원 가입 완료.
+    }
+
+    @GetMapping(value = "/members")
+    public String list(@NonNull Model model) {
+        model.addAttribute("members", memberService.findMembers());
+        return "/members/memberList";
     }
 }
