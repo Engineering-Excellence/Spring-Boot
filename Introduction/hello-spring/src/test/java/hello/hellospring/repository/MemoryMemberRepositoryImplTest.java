@@ -11,13 +11,13 @@ import java.util.NoSuchElementException;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class MemoryMemberRepositoryTest {
+class MemoryMemberRepositoryImplTest {
 
-    MemoryMemberRepository repository;
+    MemoryMemberRepositoryImpl repository;
 
     @BeforeEach
     void setUp() {
-        repository = new MemoryMemberRepository();
+        repository = new MemoryMemberRepositoryImpl();
     }
 
     @AfterEach

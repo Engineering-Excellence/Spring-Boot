@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
-public class MemoryMemberRepository implements MemberRepository {
+public class MemoryMemberRepositoryImpl implements MemberRepository {
 
     private static final Map<Long, Member> store = new ConcurrentHashMap<>(); // 동시성 문제 해결을 위해 공유 변수에서 Concurrent 자료형 사용
     private static final AtomicLong sequence = new AtomicLong(0); // 시퀀스 생성
@@ -32,8 +32,7 @@ public class MemoryMemberRepository implements MemberRepository {
     public Optional<Member> findByName(String name) {
         return store.values().stream()
                 .filter(member -> member.getName().equals(name))
-//                .findAny();
-                .findFirst();
+                .findAny();
     }
 
     @Override
