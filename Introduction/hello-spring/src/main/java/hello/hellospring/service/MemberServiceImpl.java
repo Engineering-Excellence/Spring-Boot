@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service    // Component-Scan 방식
+//@Service    // Component-Scan 방식
 public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
 
-    @Autowired
+//    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

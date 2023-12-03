@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Repository
+//@Repository
 public class MemoryMemberRepositoryImpl implements MemberRepository {
 
     private static final Map<Long, Member> store = new ConcurrentHashMap<>(); // 동시성 문제 해결을 위해 공유 변수에서 Concurrent 자료형 사용
